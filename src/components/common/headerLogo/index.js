@@ -3,7 +3,7 @@ import { SiQuickbooks } from "react-icons/si";
 
 const HeaderLogo = ({ mode = "dark" }) => {
   return (
-    <div className="pb-3 flex items-center justify-center">
+    <div className="pb-3 flex items-center justify-center max-sm:hidden">
       <SiQuickbooks
         className={`text-5xl text-gray-800 ${
           mode === "dark" && "dark:text-gray-50"

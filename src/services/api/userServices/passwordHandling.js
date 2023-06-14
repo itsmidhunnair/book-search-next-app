@@ -1,4 +1,3 @@
-
 import userSchema from "@utils/mongoSchema/userSchema";
 import bcrypt from "bcrypt";
 
@@ -21,15 +20,20 @@ async function verifyPassword(email, password) {
   try {
     const encPass = await userSchema
       .findOne({ email: email })
-      ?.select("password name");
-    const name = encPass.name;
-    const hash = encPass.password;
-    console.log("hash", hash);
-    const isMatch = await bcrypt.compare(password, hash);
-    if (isMatch) {
-      return { email, name };
+      .select("password name");
+    if (encPass) {
+      const name = encPass.name;
+      const hash = encPass.password;
+      console.log("hash", hash);
+      const isMatch = await bcrypt.compare(password, hash);
+      console.log(isMatch);
+      if (isMatch) {
+        return { email, name };
+      } else {
+        throw "Invalid Credentials";
+      }
     } else {
-      return isMatch;
+      throw "No Account Found";
     }
   } catch (error) {
     throw error;

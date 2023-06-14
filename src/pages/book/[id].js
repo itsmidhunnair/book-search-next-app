@@ -6,6 +6,8 @@ import { client } from "src/graphql/client";
 import { book } from "src/graphql/query";
 import { MdArrowBackIos } from "react-icons/md";
 import { useRouter } from "next/router";
+import { getSession, useSession } from "next-auth/react";
+import Loader from "@components/common/loader";
 
 const Book = ({ book }) => {
   const [fullContent, setFullContent] = useState(false);
@@ -16,6 +18,10 @@ const Book = ({ book }) => {
     ? book?.book?.volumeInfo?.description
     : book?.book?.volumeInfo?.description?.slice(0, 400) + "...";
 
+  if (router.isFallback) {
+    return <Loader />;
+  }
+
   return (
     <section className="body-font container mx-auto overflow-hidden bg-white text-gray-700 dark:bg-gray-800 dark:text-white md:mt-5">
       <div className="container mx-auto px-5 py-12">
@@ -25,9 +31,9 @@ const Book = ({ book }) => {
               onClick={() => {
                 router.back();
               }}
-              className="absolute -left-3 -top-10 inline-flex h-8 w-8 items-center justify-center rounded-full dark:bg-gray-600"
+              className="absolute -left-3 -top-10 inline-flex h-8 w-8 items-center justify-center rounded-full bg-gray-600"
             >
-              <MdArrowBackIos className="pl-1" />
+              <MdArrowBackIos className="pl-1 text-white" />
             </button>
             <Image
               alt="book"
@@ -137,7 +143,20 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps(context) {
+  const session = await getSession(context);
+
+  if (!session) {
+    console.log(session);
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: true,
+      },
+    };
+  }
+
+  const { params } = context;
   console.log(params);
   const id = params.id;
   if (id) {

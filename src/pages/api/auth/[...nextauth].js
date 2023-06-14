@@ -19,8 +19,7 @@ export const authOptions = {
           console.log(result);
           return result;
         } catch (error) {
-          console.log(error);
-          throw error;
+          throw new Error(error);
         }
       },
     }),

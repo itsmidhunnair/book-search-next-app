@@ -46,7 +46,7 @@ const BookCard = ({ book }) => {
         <div className="flex items-center justify-between">
           <Link
             href={`/book/${book.id}`}
-            className="inline-flex items-center rounded-lg border-2 px-3 py-2 text-center text-sm font-medium hover:bg-blue-800 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-300 dark:border-blue-600 dark:text-white dark:hover:bg-blue-600 dark:focus:ring-blue-800"
+            className="inline-flex items-center rounded-lg border-2 px-3 py-2 text-center text-sm font-medium hover:bg-gray-800 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-300 dark:border-blue-600 dark:text-white dark:hover:bg-blue-600 dark:focus:ring-blue-800"
           >
             Show
             <svg

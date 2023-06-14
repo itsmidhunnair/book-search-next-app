@@ -5,13 +5,13 @@ import React from "react";
 
 const SearchBar = () => {
   const { submitSearch } = useSearch();
-  const {query} = useRouter()
+  const { query } = useRouter();
   return (
     <>
       <div className="mb-3">
         <HeaderLogo />
       </div>
-      <form className="mx-auto max-w-4xl" onSubmit={submitSearch}>
+      <form className="mx-auto max-w-4xl px-3" onSubmit={submitSearch}>
         <label
           htmlFor="default-search"
           className="sr-only mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -47,7 +47,7 @@ const SearchBar = () => {
           />
           <button
             type="submit"
-            className="absolute bottom-2.5 right-2.5 rounded-lg bg-blue-700 px-4 py-2 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            className="absolute bottom-2.5 right-2.5 rounded-lg bg-gray-700 px-4 py-2 text-sm font-medium text-white hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
             Search
           </button>
