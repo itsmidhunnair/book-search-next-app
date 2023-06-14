@@ -9,6 +9,8 @@ import useAuth from "@hooks/useAuth";
 import { signupSchema } from "@constants/schema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Loader from "@components/common/loader";
+import { useRouter } from "next/router";
+import { useSession } from "next-auth/react";
 
 const Signup = () => {
   const {
