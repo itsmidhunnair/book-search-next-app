@@ -8,21 +8,23 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/router";
 import Loader from "@components/common/loader";
+import React, { useRef } from "react";
+import LoadingBar from "react-top-loading-bar";
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   const [dark, setDark] = useState(true);
-  const [loading, setLoading] = useState(false);
+  const ref = useRef(null);
 
   const router = useRouter();
 
   useEffect(() => {
     const start = () => {
       console.log("start");
-      setLoading(true);
+      ref.current.continuousStart();
     };
     const end = () => {
       console.log("finished");
-      setLoading(false);
+      ref.current.complete();
     };
     router.events.on("routeChangeStart", start);
     router.events.on("routeChangeError", end);
@@ -34,9 +36,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
     };
   }, [router]);
 
-  return loading ? (
-    <Loader />
-  ) : (
+  return (
     <>
       {dark && (
         <style jsx global>
@@ -63,6 +63,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
               pauseOnHover
               theme="light"
             />
+            <LoadingBar color="#f11946" ref={ref} height={6} />
             <Header setDark={setDark} dark={dark} />
             <Component {...pageProps} />
           </ApolloProvider>
