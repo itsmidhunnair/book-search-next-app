@@ -10,12 +10,15 @@ const Pagination = () => {
       <ReactPaginate
         breakLabel="..."
         nextLabel="Next >"
-        // onClick={(e) =>
+        onClick={(e) =>
+          // console.log(e)
+          router.push({
+            query: { ...router.query, page: e.nextSelectedPage + 1 },
+          })
+        }
+        // onPageChange={(e) =>
         //   router.push({ query: { ...router.query, page: e.selected + 1 } })
         // }
-        onPageChange={(e) =>
-          router.push({ query: { ...router.query, page: e.selected + 1 } })
-        }
         pageRangeDisplayed={7}
         pageCount={parseInt(router.query.page) + 5}
         previousLabel="< Prev"

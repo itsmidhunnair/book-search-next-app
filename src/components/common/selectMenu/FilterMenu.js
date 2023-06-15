@@ -8,14 +8,14 @@ import { MdFilterList } from "react-icons/md";
 
 // const Select = ({ handleOpen, open, setSelectedValue, options }) => {
 const Select = ({ options }) => {
-  const { query, push } = useRouter();
+  const { query } = useRouter();
 
   const { clearSelected, handleOpen, open, selected, setSelectedValue } =
     useSelect();
 
-  useEffect(() => {
-    push({ query: { ...query, filter: selected } });
-  }, [selected]);
+  // useEffect(() => {
+  //   push({ query: { ...query, filter: selected } });
+  // }, [selected]);
 
   return (
     <>
@@ -63,13 +63,16 @@ const Select = ({ options }) => {
 export default Select;
 
 const Option = ({ option, setSelectedValue }) => {
+  const { push, query } = useRouter();
   return (
     <>
       <li>
         <button
           className="block w-full px-4 py-2 text-left hover:bg-gray-100"
           value={option.value}
-          onClick={(e) => setSelectedValue(e)}
+          onClick={(e) => {
+            setSelectedValue(e);
+          }}
         >
           {option.text}
         </button>
