@@ -7,7 +7,7 @@ import { HiOutlineLightBulb } from "react-icons/hi";
 const MobileNav = ({ setDark, dark }) => {
   const { status, data } = useSession();
   return (
-    <div className="relative z-40 flex w-full items-center justify-between bg-neutral-100 py-2 shadow-md shadow-black/5 dark:bg-gray-800 dark:shadow-black/10 md:hidden lg:flex-wrap lg:justify-start lg:py-4">
+    <div className="fixed top-[78px] z-40 flex w-full items-center justify-between bg-neutral-100 py-2 shadow-md shadow-black/5 dark:bg-gray-800 dark:shadow-black/10 md:hidden lg:flex-wrap lg:justify-start lg:py-4">
       {status === "authenticated" && (
         <div
           className="relative flex w-full items-center justify-between px-4"

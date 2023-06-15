@@ -6,7 +6,7 @@ const Pagination = () => {
   const router = useRouter();
 
   return (
-    <div className="my-10 flex max-w-7xl flex-wrap justify-center max-sm:w-screen">
+    <div className="my-10 flex max-w-7xl flex-wrap justify-center max-sm:w-full">
       <ReactPaginate
         breakLabel="..."
         nextLabel="Next >"
@@ -19,8 +19,8 @@ const Pagination = () => {
         pageRangeDisplayed={7}
         pageCount={parseInt(router.query.page) + 5}
         previousLabel="< Prev"
-        containerClassName="flex gap-x-3"
-        pageClassName="bg-gray-800 rounded-md text-white max-sm:hidden"
+        containerClassName="flex gap-x-3 flex-wrap  max-sm:justify-center gap-y-2"
+        pageClassName="bg-gray-800 rounded-md text-white"
         pageLinkClassName="text-bold px-3"
         previousClassName="bg-gray-800 rounded-md text-white"
         previousLinkClassName="text-bold px-3 whitespace-nowrap"

@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Rating } from "react-simple-star-rating";
 import React from "react";
 import Link from "next/link";
+import placeHolderImg from "@public/assets/img/No-Image-Placeholder.png";
 
 const BookCard = ({ book }) => {
   return (
@@ -9,7 +10,7 @@ const BookCard = ({ book }) => {
       <div className="group relative h-72 w-full">
         <Image
           className="rounded-t-lg object-contain pt-7 transition-all duration-500 group-hover:scale-110"
-          src={book?.volumeInfo?.imageLinks?.thumbnail}
+          src={book?.volumeInfo?.imageLinks?.thumbnail || placeHolderImg}
           alt=""
           fill
         />

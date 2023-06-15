@@ -149,8 +149,8 @@ const Header = ({ setDark, dark }) => {
         </div>
       </nav>
       <div
-        className={`overflow-hidden transition-all duration-500 ${
-          mobileNav ? "h-0" : "h-full"
+        className={`overflow-hidden w-screen relative transition-all duration-500 ${
+          mobileNav ? "hidden" : "block"
         }`}
       >
         <MobileNav setDark={setDark} dark={dark} />

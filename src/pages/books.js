@@ -11,6 +11,8 @@ import Select from "@components/common/selectMenu/FilterMenu";
 import { filterOptions } from "@constants/filter/options";
 import Loader from "@components/common/loader";
 import { getSession, useSession } from "next-auth/react";
+import { toast } from "react-toastify";
+import { toastConfig } from "@constants/toastConfig";
 
 const Books = (props) => {
   const router = useRouter();
@@ -71,6 +73,7 @@ export async function getServerSideProps(context) {
   const session = await getSession(context);
 
   if (!session) {
+    toast.warning("Please Login to Continue", toastConfig);
     return {
       redirect: {
         destination: "/login",

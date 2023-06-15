@@ -8,7 +8,7 @@ const SearchBar = () => {
   const { query } = useRouter();
   return (
     <>
-      <div className="mb-3">
+      <div className="mb-3 max-sm:hidden">
         <HeaderLogo />
       </div>
       <form className="mx-auto max-w-4xl px-3" onSubmit={submitSearch}>
