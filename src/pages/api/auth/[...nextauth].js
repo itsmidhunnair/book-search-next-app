@@ -16,16 +16,15 @@ export const authOptions = {
         dbConnect();
         try {
           const result = await verifyPassword(email, password);
-          console.log(result);
+          console.log("result", result);
           return result;
         } catch (error) {
-          throw new Error(error);
+          throw new Error(JSON.stringify(error));
         }
       },
     }),
-    
+
     // ...add more providers here
   ],
-  
 };
 export default NextAuth(authOptions);

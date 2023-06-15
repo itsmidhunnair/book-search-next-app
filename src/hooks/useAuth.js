@@ -9,26 +9,30 @@ const useAuth = () => {
   const { push } = useRouter();
 
   const signup = async (data) => {
+    const loading = toast.loading("Creating Account...");
     try {
-      const loading = toast.loading("Creating Account...");
-      const response = axios.post("/api/auth/signup", data);
+      const response = await axios.post("/api/auth/signup", data);
       toast.update(loading, {
         ...toastConfig,
         render: (
           <div className="text-center">
-            {response.data}.<br />
+            Hey! <b>{response.data.name}</b> Your account has been created.
+            <br />
             Please Login to Continue...
           </div>
         ),
         type: "success",
         isLoading: false,
       });
+      console.log(response);
     } catch (error) {
+      console.log(error);
       toast.update(loading, {
         ...toastConfig,
         render: (
           <div className="text-center">
-            Account creation Failed! <br /> Please Try Again...
+            {error.response.data}
+            <br />
           </div>
         ),
         type: "error",
@@ -46,10 +50,12 @@ const useAuth = () => {
       redirect: false,
       callbackUrl: `${path.appBaseUrl}/books`,
     });
+    console.log(result);
     if (result.error) {
+      const error = JSON.parse(result.error);
       toast.update(loading, {
         ...toastConfig,
-        render: <div className="text-center">{result.error}</div>,
+        render: <div className="text-center">{error.msg}</div>,
         type: "error",
         isLoading: false,
       });

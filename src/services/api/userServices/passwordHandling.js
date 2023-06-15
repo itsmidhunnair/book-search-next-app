@@ -30,10 +30,10 @@ async function verifyPassword(email, password) {
       if (isMatch) {
         return { email, name };
       } else {
-        throw "Invalid Credentials";
+        throw { msg: "Invalid Credentials", code: 401 };
       }
     } else {
-      throw "No Account Found";
+      throw { msg: "No Account Found", code: 404 };
     }
   } catch (error) {
     throw error;

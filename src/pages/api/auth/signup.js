@@ -13,12 +13,14 @@ export default async function handler(req, res) {
         email: email,
         password: encPass,
       });
+      console.log(data);
       res.status(200).json(data);
     } catch (error) {
       if (error.code === 11000) {
         return res.status(409).json("User Already Exist! Please  Login...");
+      } else {
+        res.status(400).json(error);
       }
-      res.status(400).json(error);
     }
   }
 }
