@@ -34,7 +34,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
       router.events.off("routeChangeComplete", end);
       router.events.off("routeChangeError", end);
     };
-  }, [router]);
+  }, []);
 
   return (
     <>
