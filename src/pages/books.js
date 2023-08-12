@@ -89,7 +89,7 @@ export async function getServerSideProps(context) {
       query: searchBooks,
       variables: {
         input: {
-          index: parseInt(query.page),
+          index: parseInt(query.page) * 10 - 9,
           search: query.search,
           filter: query.filter,
         },
