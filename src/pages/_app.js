@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   const ref = useRef(null);
 
   const router = useRouter();
-
+  
   useEffect(() => {
     const start = () => {
       console.log("start");
@@ -63,7 +63,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
               pauseOnHover
               theme="light"
             />
-            <LoadingBar color="#f11946" ref={ref} height={6} />
+            <LoadingBar color="#2563eb" ref={ref} height={4} />
             <Header setDark={setDark} dark={dark} />
             <Component {...pageProps} />
           </ApolloProvider>
